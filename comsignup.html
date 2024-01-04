@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Signup</title>
+
+    <style>
+        body {
+            min-height: 100vh;
+            background-image: url('https://cdn.pixabay.com/photo/2016/11/29/04/19/ocean-1867285_1280.jpg');
+            background-size: cover;
+        }
+
+        form {
+            width: 400px;
+            margin: 0 auto;
+            border: 2px solid black;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"],
+        input[type="button"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        input.small-button {
+            padding: 5px; /* Adjust the padding as needed */
+            font-size: 12px; /* Adjust the font size as needed */
+        }
+        .navbar{
+            /* border: 3px solid black; */
+            height: 50px;
+            width: 100%;
+            background-color: rgba(10, 9, 9, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            
+        }
+
+        .services{
+            border: 3px solid black;
+            margin-right: 150px;
+            /* width: 200px;   */
+        }
+
+        .logo{
+            border: 3px solid black;
+            margin-left: 150px;
+            text-decoration: none;
+            /* width: 200px; */
+            /* padding-bottom: 20px; */
+        }
+
+        .logo a{
+            text-decoration: none;
+            color: #ffff;
+            font-size: x-large;
+            /* display: inline-flex; */
+            /* align-items: center; */
+         /* margin-bottom: -30px;
+            /* padding-top: 20px; */
+            border: 3px solid black; 
+        }
+
+        .logo img {
+            margin-right: 10px;
+        }
+
+        .navbar img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+
+        .services a{
+            text-decoration: none;
+            color: #ffff;
+            font-size: x-large;
+        }
+
+        /* .navbar {
+            background-color: rgba(10, 9, 9, 0.1);
+            height: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #333;
+        }
+
+        .navbar div {
+            width: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand,
+        .navbar-text {
+            color: #f5f0f0;
+            font-size: 25px;
+            margin-bottom: 0px;
+            /* border: 2px solid#007bff; */
+            /* padding-top: 1px; 
+        }
+
+
+        
+
+        .navbar img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+
+        .about {
+            color: #f5f0f0;
+        }
+
+        .navbar a {
+            text-decoration: none;
+        } */
+    </style>
+
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="./images/Screenshot__35_-removebg-preview.png" alt="Weather Fable Logo" width="40" height="40">
+                
+                <a href="#" >Weather Fable</a>
+        </div>
+        <div class="services">
+            <a href="#">About</a>
+        </div>
+    </div>
+
+    <h2>User Signup</h2>
+
+    <form action="signup" method="post">
+
+        <div>
+
+            <label>Role</label>
+
+            <select name="userType">
+
+                <option value="user">User</option>
+
+                <option value="admin">Admin</option>
+
+            </select>
+
+        </div>
+
+        <div>
+
+            <label>Username:</label>
+
+            <input type="text" name="username" required>
+
+        </div>
+
+        <div>
+
+            <label>Password:</label>
+
+            <input type="password" name="password" required>
+
+        </div>
+
+        <div>
+
+            <label>Confirm Password:</label>
+
+            <input type="password" name="confirmPassword" required>
+
+        </div>
+
+        <div>
+
+            <label>Email:</label>
+
+            <input type="email" name="email" required>
+
+        </div>
+
+        <div>
+
+            <label>Enter OTP:</label>
+
+            <input type="text" name="otp" required>
+
+            <!-- Get Code button styled in blue, smaller size -->
+
+            <input type="button" value="Get Code" style="background-color: #007bff;" class="small-button">
+
+        </div>
+
+        <div>
+
+            <input type="submit" value="Sign Up">
+
+        </div>
+
+        <script>
+
+            // Function to generate OTP and show the OTP input field
+
+            function generateOTP() {
+
+                var email = document.getElementsByName("email")[0].value;
+
+                var xhr = new XMLHttpRequest();
+
+                xhr.open("GET", "GenerateOTP?email=" + email, true);
+
+                xhr.send();
+            }
+
+        </script>
+
+    </form>
+
+</body>
+
+</html>
