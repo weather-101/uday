@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Box</title>
+   
+    <link rel="stylesheet" href="Homepage.css">
+
+</head>
+
+<body>
+
+     
+
+
+<!-- 
+    <div class="logo-container">
+        <img src="bg2m.png" alt="Your Logo">
+    </div>
+
+-->
+        <nav class="navbar">
+            <div class="logo">
+            <a href="Homepage.html">
+                <div class="logo-container">
+                    <a href="Homepage.html" class="logo-link">
+                        <img src="Logo.png" alt="Your Logo" class="logo-image">
+                        <span class="logo-text">Weather Fable</span>
+                    </a>
+                </div>
+            </a>
+            </div>
+            
+            <div class="auth-buttons">
+            <a href="comlogin.html" class="login-btn">Login</a>
+            <a href="sign.html" class="signup-btn">Sign Up</a>
+            </div>
+        </nav>
+
+
+    <form>
+        <div class="search-container">
+            <label id="label1" for="search">Select or Enter City:</label>
+            <div class="custom-dropdown">
+                <select id="searchDropdown" name="q" onchange="updateSearchBar()">
+
+                    <option value="" disabled selected>Select a City</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Hyderabad">Hyderabad</option>
+
+                </select>
+                <div class="dropdown-icon">&#9660;</div>
+            </div> 
+
+            
+
+            <div class="searchBox" id="searchBox">
+                <input class="searchInput" type="text" name="" placeholder="Search" onkeypress="handleKeyPress(event)">
+                <button class="searchButton" type="button" onclick="showWeatherData()">
+                    <img src="search.png" alt="Search Icon">
+                </button>
+            </div>
+
+        </div>
+
+       <!--  <button type="button" id="loginButton" onclick="redirectToLogin()">Login</button>
+        <button type="button" id="sign_up_Button" onclick="redirectToSignUp()">SignUp</button> -->
+
+    </form>
+
+   
+    <div id="weatherContainer" class="weather-container">
+   
+        <div class="weather-box" id="weatherBox1">
+            <h2>Temperature</h2>
+            <img src="temperature.png" alt="Temperature Image">
+            <p>22°C</p>
+     
+           
+        </div>
+     
+        <div class="weather-box" id="weatherBox2">
+            <h2>Humidity</h2>
+            <img src="hum.png" alt="Temperature Image">
+            <p>60%</p>
+        </div>
+     
+        <div class="weather-box" id="weatherBox3">
+            <h2>WindSpeed</h2>
+            <img src="wind.png" alt="Temperature Image">
+            <p>2 m/s</p>
+           
+        </div>
+     
+        <div class="weather-box" id="weatherBox4">
+            <h2>Cloudiness</h2>
+            <img src="clouds.png" alt="Temperature Image">
+            <p>50%</p>
+        </div>
+    </div>
+     
+
+
+    <script>
+        
+        var searchBox = document.getElementById('searchBox');
+        var searchInput = document.querySelector('.searchInput');
+        var weatherContainer = document.getElementById('weatherContainer');
+
+        function updateSearchBar() {
+            var selectedCity = document.getElementById('searchDropdown').value;
+            searchInput.value = selectedCity;
+            
+            
+        }
+
+        function redirectToLogin() {
+            window.location.href = "";
+        }
+
+        function redirectToSignUp() {
+            window.location.href = "";
+        }
+        
+        function showWeatherData() {
+            var selectedCity = searchInput.value || document.getElementById('searchDropdown').value;
+ 
+            if (selectedCity) {
+                // Display weather data only if a city is selected or entered
+                weatherContainer.style.display = 'flex';
+                weatherContainer.classList.add('pop-in');
+            } else {
+                // Optionally show an alert or handle the case where no city is selected or entered
+                alert('Please select or enter a city.');
+            }
+        }
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                
+                showWeatherData();
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Information</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+           
+         label[for="search"] {
+           color: #ffffff; 
+              }
+        
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button#loginButton {
+            background-color: #007bff;
+            /* Blue color for login button */
+            color: #fff;
+            padding: 10px 20px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        button#sign_up_Button {
+            background-color: #28a745;
+            /* Green color for sign-up button */
+            color: #fff;
+            padding: 10px 20px;
+            position: absolute;
+            top: 10px;
+            right: 120px;
+            /* Adjust the right property to separate buttons */
+            cursor: pointer;
+        }
+
+     
+        .weather-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .weather-info,
+        .weather-category,
+        .weather-value {
+            text-align: center;
+        }
+
+        .weather-info {
+            font-size: 18px;
+            font-weight: bold;
+            flex-basis: 100%;
+            margin-bottom: 20px;
+        }
+
+        .weather-category,
+        .weather-value {
+            flex-basis: 10%;
+            margin: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form onsubmit="getWeather(); return false;" class="search-form">
+
+        <div class="search-container">
+            <label for="search">Select or Enter City:</label>
+            <div class="custom-dropdown">
+                <select id="searchDropdown" name="q" onchange="updateSearchBar()">
+
+                    <option value="" disabled selected>Select a City</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Bangalore">Chennai</option>
+                    <option value="Hyderabad">Ahmedabad</option>
+
+                </select>
+
+                <div class="dropdown-icon">&#9660;</div>
+
+            </div>
+            <input type="text" id="searchInput" name="q" placeholder="Enter your Location">
+            <input type="submit" value="Search">
+        </div>
+
+        <button type="button" id="loginButton" onclick="redirectToLogin()">Login</button>
+        <button type="button" id="sign_up_Button" onclick="redirectToSignUp()">SignUp</button>
+        <button type="button" id="getCurrentLocationButton" onclick="getCurrentLocation()">Get Current Location</button>
+
+    </form>
+
+    <div class="weather-container">
+        <p class="weather-info" id="weather-info"></p>
+        <div class="weather-category">
+            <p class="weather-value" id="temperature-value"></p>
+        </div>
+        <div class="weather-category">
+            <p class="weather-value" id="humidity-value"></p>
+        </div>
+        <div class="weather-category">
+            <p class="weather-value" id="wind-value"></p>
+        </div>
+        <div class="weather-category">
+            <p class="weather-value" id="cloudiness-value"></p>
+        </div>
+    </div>
+
+    <script>
+        function updateSearchBar() {
+            var selectedCity = document.getElementById('searchDropdown').value;
+            document.getElementById('searchInput').value = selectedCity;
+        }
+
+        function redirectToLogin() {
+            window.location.href = "login.jsp";
+        }
+
+        function redirectToSignUp() {
+            window.location.href = "sign_up.jsp";
+        }
+
+       
+    </script>
+
+</body>
+
+</html>
